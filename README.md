@@ -1,0 +1,2 @@
+# tentSericeGetCaijiData
+在原来184腾讯服务器获取自媒体数据的程序
