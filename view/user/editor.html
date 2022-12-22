@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>充值</title>
+    <script src="/static/dist/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../static/dist/css/bootstrap.min.css">
+    <script src="/static/dist/js/bootstrap.js"></script>
+    <link rel="shortcut icon" href="/static/img/icon.png" type="image/x-icon" />
+</head>
+
+<body>
+    <div class="container-fluid">
+        <!-- 头部导航条 -->
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a href="#"><img src="../static/img/caijiloga.png"></a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <!-- <li><a target="_blank" href="/vip"><img src="../static/img/vip.png"></a></li> -->
+                        <li><a href="#"></a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="false"><span
+                                    class="glyphicon glyphicon-user"></span>用户名:超级管理员
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="glyphicon glyphicon-phone" href="#">账&nbsp;号:</a></li>
+                                <li><a class="glyphicon glyphicon-euro" href="#">有效期:</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a class="glyphicon glyphicon-log-out" href="/user/auth/loginout">退出</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <form action="/adminRecharge/{{ .ID }}" method="post">
+            <table class="table table-bordered">
+                <tbody>
+                    <th style="text-align: center;">ID</th>
+                    <th style="text-align: center;">注册时间</th>
+                    <th style="text-align: center;">用户名</th>
+                    <th style="text-align: center;">账号</th>
+                    <th style="text-align: center;">VIP到期时间</th>
+                    <th style="text-align: center;">充值</th>
+
+                </tbody>
+
+                <tr style="text-align: center;">
+                    <td>{{ .ID }}</td>
+                    <td>{{ .CreatedAt.Format "2006-01-02 15:04:05"}}</td>
+                    <td><input style="text-align: center;border:none" type="text" name="username"
+                            value="{{ .Username }}" id="username"></td>
+                    <td ><input style="text-align: center;border:none" type="text" name="account" value="{{ .Account }}"
+                            id="username"></td>
+                    <td><input style="text-align: center;border:none" type="date" name="vip" value="{{ .Vip }}"></td>
+                    <td><button type="submit" class="layui-btn layui-btn-normal"
+                            style="width: 45px;height: 25px;background-color: #18d3e5;color: white;border: none;border-radius: 3px;">
+                            <font size="3px" style="align-content: center;font-weight: bold;">充值</font>
+                        </button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+<style>
+    input {
+        outline: none
+    }
+</style>
+
+</html>
+
+

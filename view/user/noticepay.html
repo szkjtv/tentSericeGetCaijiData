@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh-CN">
+
+{{ template "title"}}
+
+<body>
+
+    <!-- <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">模态框</button> -->
+    <!--data-target="#myModal
+        "执行弹窗的div的id-->
+    <div tabindex="-1" role="dialog" id="myModal" aria-labelledby="myModalLabel">
+        <div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">查看方案</h4>
+                    <!--弹窗的标题-->
+                </div>
+                <div class="modal-body">
+                    <!--弹窗的内容-->
+                    <table>
+                        <tr>
+                            <td style="vertical-align: top;font-weight:bold;width: 40px;">购买方案:&nbsp;&nbsp;</td>
+                            <td>
+                                <div id="box">
+                                    <div id="content"></div>
+
+
+
+                                    <table>
+                                        <tr style="height: 14px;">
+                                            <td style="text-align: center;font-weight:bold;font-size: 16px;">
+                                                {{.payment}}
+                                            </td>
+                                        </tr>
+                                        <tr style="height: 14px;">
+                                            <td style="text-align: center;font-weight:bold;font-size: 14px;color: red;">
+                                                ¥ {{.Paymentamount}}
+                                            </td>
+                                        </tr style="height: 14px;">
+                                        <tr>
+                                            <td style="text-align: center;color: red;">折后{{.After}}元/月，{{.day}}元/天
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style="height: 12px;">
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>到期时间:&nbsp;&nbsp;</td>
+                            <td>{{.vip}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <hr>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2">
+                                支付方式(暂只支持支付宝)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input type="checkbox" checked>&nbsp;
+                                <span> <img src=" ./static/img/alipay.47e9f138.png" height="16"></span>
+                                <span style="font-size: 16px;">支付宝支付</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>实付金额:&nbsp;&nbsp;<span
+                                    style="font-weight:bold;font-size: 24px;color: red;">￥{{.Paymentamount}}</span>
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2">
+                                <hr>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input required class="form-check-input" type="checkbox" id="check1" value="接受"
+                                    checked><span style="font-size: 18px;">阅读并接受</span><a href="#">《写易会员服务协议》</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <!-- <hr> -->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">您将购买的商品为虚拟信息服务，购买后<span style="color: red;">不支持退订、转让、退换，</span>请斟酌确认。
+                            </td>
+                        </tr>
+                    </table>
+                    <h2 style="text-align: center;">
+                        <a style="width: 40%;font-size: 16px;" href="{{.url}}" class="btn pay"
+                            target="_blank">{{.pay}}</a>
+
+                    </h2>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+
+        // $(".myModal").click(function () {
+        //     $('#myModal').modal('show');
+        //     alert('模态框打开了');
+        // });
+
+        // $('#myModal').on('hide.bs.modal', function () {
+        //     alert('模态框关闭了');
+        // });
+    </script>
+
+</body>
+<style>
+    #box {
+        width: 200px;
+        height: 100px;
+        /* margin: 10px 20px 30px 40px; */
+        /* margin: 0px 10px 0px 0px; */
+        border: solid 1px #eaeaeb;
+        /* padding: 30px 20px 30px 40px; */
+        padding: 20px 20px 80px 20px;
+        background-color: #fafbfc;
+    }
+
+    #content {
+        width: 100%;
+        height: 100%;
+        /* background: blue; */
+    }
+
+    .pay {
+        background-color: #f56c6c;
+        color: white;
+    }
+</style>
+
+</html>

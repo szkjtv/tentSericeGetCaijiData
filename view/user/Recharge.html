@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+{{template "title".}}
+
+<body>
+
+
+    <div class="layui-layout layui-layout-admin ">
+        <div class="layui-header layui-bg-blue">
+            <div class="layui-logo layui-hide-xs layui-bg-black layui-bg-blue "><img src="/static/img/caijiloga.png"
+                    alt=""></div>
+        </div>
+
+
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <br>
+
+            <div style="margin-left: 12vw;width:85%">
+                <div>
+                    <form action="/admin" method="get">
+                        <table>
+                            <tr>
+                                <td style="width: 120px;"><span><input class="layui-input" lay-verify="required"
+                                            style="width: 200px;height:28px" name="account" placeholder="输入手机号查询" value="{{ .inputvalee }}{{
+                                .cmtread}}" name="cmt">
+                                    </span>
+                                </td>
+                                <td><span>&nbsp; <button
+                                            style="width: 40px;height:28px;color:aliceblue;border:none;outline:none;"
+                                            type="submit" class="layui-bg-blue" id="search">搜索</button></span> </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+
+
+
+                <div>
+                    <table class="layui-table" style="width: 60%;" id="demo">
+
+                        <thead class="cent">
+                            <tr>
+                                <th style="text-align:center;font-size: large;font-weight: bold;">注册时间</th>
+                                <th style="text-align:center;font-size: large;font-weight: bold;">用户名</th>
+                                <th style="text-align:center;font-size: large;font-weight: bold;">账号</th>
+                                <th style="text-align:center;font-size: large;font-weight: bold;">VIP到期时间</th>
+                                <th style="text-align:center;font-size: large;font-weight: bold;">充值</th>
+                                <th style="text-align:center;font-size: large;font-weight: bold;">删除用户</th>
+                            </tr>
+                        </thead>
+
+                        {{ range $v := .info }}
+                        <tbody>
+                            <tr style="text-align: center;">
+                                <td>{{ $v.Redate }}</td>
+                                <td>{{ $v.Username }}</td>
+                                <td>{{ $v.Account }}</td>
+                                <td>{{ $v.Vip}}</td>
+                                <td><a target="_blank" href="/showcharge/{{ $v.ID }}">充值</a></td>
+                                <td><a href="/deleuser/{{ $v.ID }}">删除用户</a></td>
+                            </tr>
+                        </tbody>
+                        {{ end }}
+
+                        {{ range $v := .searinfo }}
+                        <tbody>
+                            <tr style="text-align: center;">
+                                <td>{{ $v.Redate }}</td>
+                                <td>{{ $v.Username }}</td>
+                                <td>{{ $v.Account }}</td>
+                                <td>{{ $v.Vip}}</td>
+                                <td><a href="/showcharge/{{ $v.ID }}">充值</a></td>
+                                <td><a href="/deleuser/{{ $v.ID }}">删除用户</a></td>
+                            </tr>
+                        </tbody>
+                        {{ end }}
+                        <tr>
+                            <td colspan="6" style="text-align: center;">
+                                <a type="button" href="/admin?pageSize=10&currentPage={{ .reduce }}">上一页</a>&nbsp;
+                                <span>第 {{.currentPage}} 页</span>&nbsp;
+                                <a type="button" href="/admin?pageSize=10&currentPage={{ .add }}">下一页</a>
+                                &nbsp;<span>共 {{ .total }}{{ .searchtotal}} 条</span>&nbsp; <span><span>共 {{
+                                        .pagenumber}}
+                                        页</span><a href="{{ .renovate }}"> 刷新 </a>{{ .topage}}</span>
+                                <span>前往 <input class="page" type="" min="1" autocomplete="off" id="pageNo"
+                                        value="{{.currentPage}}" onKeyPress="onlyNumber();" /> 页 </span>
+                                <a class="btn btn-primary" href="javascript:;"
+                                    onclick="location ='/admin?pageSize=10&currentPage='+document.getElementById('pageNo').value;">确定</a>
+                            </td>
+                        </tr>
+                    </table>
+
+
+
+
+                    <div
+                        style="width: 100%;text-align: center;font-size:50px;color: blue;height: 80px;line-height: 80px;margin-left:-250px">
+                        <span>{{ .zuosi }}{{ .datanull}} {{ .deletesussce}}</span>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+
+            {{ template "footer" .}}

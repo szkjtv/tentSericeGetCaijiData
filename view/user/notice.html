@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <script src="../static/dist/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../static/dist/css/bootstrap.min.css">
+    <script src="../static/dist/js/bootstrap.js"></script>
+    <link rel="shortcut icon" href="../static/img/icon.png" type="image/x-icon" />
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="#"><img src="../static/img/caijiloga.png"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a target="_blank" href="/vip"><img src="../static/img/vip.png"></a></li>
+                    <li><a href="#"><img src="{{.ordinaryuser}}{{.vipuserimg}}"></a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false"><span class="glyphicon glyphicon-user"></span>用户名:{{ .username }}
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="glyphicon glyphicon-phone" href="#">账&nbsp;号:{{ .account }}</a></li>
+                            <li><a class="glyphicon glyphicon-euro" href="#">有效期:{{ .vip }}</a></li>
+
+                            <li role="separator" class="divider"></li>
+                            <li><a class="glyphicon glyphicon-log-out" href="/user/auth/loginout">退出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    {{ template "uchead"}}
+
+
+    <div class="container">
+        <form class="form-inline" action="/user/auth/anecdote" method="get">
+            <div class="form-group">
+                <label for="exampleInputName2">阅读量:</label>
+                <input style="width:120px" type="number" name="cmt" placeholder="{{ .searchnull}}阅读量大于" value="{{ .inputvalee }}{{
+                    .cmtread}}" class="form-control" id="exampleInputName2" placeholder="输入阅读量">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail2">标题:</label>
+                <input style="width:200px" type="text" class="form-control" value="{{ .title}}" name="title"
+                    id="exampleInputEmail2" placeholder="输入标题搜索支持模糊搜索">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail2">作者:</label>
+                <input style="width:120px" type="text" class="form-control" id="exampleInputEmail2" value="{{ .auth}}"
+                    name="auth" placeholder="输入作者名称">
+            </div>
+            <button type="submit" class="btn btn-default">搜索</button>
+        </form>
+    </div>
+    <br>
+    <!-- 两边留白 -->
+    <div class="container" style="height: 550px;">
+        <table class="table table-hover" style="width: 100%;text-align: center;">
+            <tbody>
+                <th>标题</th>
+                <th>时间</th>
+                <th>作者</th>
+                <th>评论</th>
+                <th>阅读量</th>
+            </tbody>
+
+            {{ range $v := .ucsh }}
+            <tr>
+                <td><a target="_blank" href="#"><a target="_blank" href="{{ .Link }}">{{ .Title }}</a></a>
+                </td>
+                <td>{{ .Itm}}</td>
+                <td>{{ .Auth }}</td>
+                <td>{{ .Cmt }}</td>
+                <td>{{ .Cnt}}</td>
+            </tr>
+            {{ end }}
+
+            <tr>
+                <td colspan="6" style="text-align: center;font-size:50px;line-height:200px;">
+
+                    <a style="color:blue" data-toggle="modal" href="#mymodal-link" id="href-btn">{{ .notice }}</a>
+                    {{.passworderro}} {{.accountno}}{{.acconull}} {{.regiternotice}}
+                    {{.accoundz}}{{.numbererro}}{{.username}}{{.passnull}}{{.passowrd}}
+                </td>
+            </tr>
+
+
+
+
+
+
+
+
+            <!-- <a class="btn btn-primary" data-toggle="modal" href="#mymodal-link" id="href-btn">通过链接href属性触发</a> -->
+            <!-- 模态弹出窗内容 -->
+            <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"
+                id="mymodal-link">
+                <div class="modal-dialog" style="width:25%;margin-top: 10%;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span
+                                    aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title">登录</h4>
+                        </div>
+                        <div class="modal-body" style="text-align: center;">
+
+                            <!-- <form class="form-inline" action="/user/login" method="post"> -->
+                            <form class="form-inline" action="/user/login" method="post">
+                                <span><span style="color: red;">{{.accountno}}</span></span>
+                                <div class="form-group form-inline">
+                                    <!-- {{.notice}} -->
+
+                                    <label for="">手&nbsp;&nbsp;&nbsp;&nbsp;机:</label>
+                                    <input type="number" oninput="if(value.length>10)value=value.slice(0,11)"
+                                        class="form-control" name="account" required placeholder="输入手机号"
+                                        onkeyup="this.value=this.value.replace(/\D/g,'')">
+                                </div>
+
+                                <span><span style="color: red;">{{.passworderro}}</span></span>
+                                <div class="form-group form-inline">
+                                    <!-- {{.notice}} -->
+
+                                    <label for="">密&nbsp;&nbsp;&nbsp;&nbsp;码:</label>
+                                    <input type="password" maxlength="11" class="form-control"
+                                        id="exampleInputPassword3" name="password" required placeholder="Password">
+                                </div>
+
+
+
+                                <div style="margin-left: -10%;">
+                                    <span class="" style="color: red;">{{.noticecode}}</span>
+                                </div>
+                                <div class="form-group form-inline">
+                                    <!-- <div class="form-inline row"> -->
+                                    <label for="">验证码:</label>
+                                    <input type="number" oninput="if(value.length>4)value=value.slice(0,4)" required
+                                        class="form-control" name="code" style="width: 115px;" placeholder="输入验证码" />
+                                    <img src="/user/captcha/login"
+                                        onclick="this.src='/user/captcha/login?v='+Math.random()" height="36">
+
+                                    <!-- </div> -->
+                                </div>
+
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"> 记住&nbsp;<span><a data-toggle="modal"
+                                                href="#mymodal-register" id="href-register">没有账号去注册</a></span>
+                                    </label>
+                                </div>
+                                <div class="checkbox" style="text-align: center;">
+                                    <span class="crushtobuy"
+                                        style="font-size:20px;">{{.renotice}}{{.regiternotice}}{{.accoundz}}{{.passowrd}}{{.phonenumbe}}{{.numbererro}}{{.passnull}}</span>
+                                </div>
+                                <!-- <button type="submit" class="btn btn-default">登录</button> -->
+
+                                <!-- <button class="btn btn-default"><a data-toggle="modal" href="#mymodal-register"
+                                        id="href-register">注册</a></button> -->
+
+                                <!-- 登录注册的页面 -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-default">登录</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+                            <!-- <button type="button" class="btn btn-primary">保存</button> -->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            </form>
+
+            <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"
+                id="mymodal-register">
+                <div class="modal-dialog" style="width:25%;margin-top: 10%;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span
+                                    aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title">注册页面</h4>
+                        </div>
+                        <div class="modal-body" style="text-align: center;">
+                            <!-- 弹窗内容 -->
+                            <!-- 注册表单 -->
+                            <!-- <form class="form-inline" action="/user/register" method="post"> -->
+                            <form class="form-inline" action="/captcha/verify" method="post">
+                                <div class="form-group form-inline">
+                                    <label for="">用户名:</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail3" name="username"
+                                        value="" placeholder="用户名,不填随机生成">
+                                </div>
+                                <div class="form-group form-inline">
+                                    <label for="">手&nbsp;&nbsp;&nbsp;&nbsp;机:</label>
+                                    <input type="number" oninput="if(value.length>10)value=value.slice(0,11)" required
+                                        class="form-control" id="exampleInputEmail3" name="account" value=""
+                                        maxlength="11" placeholder="输入手机号">
+                                </div>
+                                <div class="form-group form-inline">
+                                    <label for="">密&nbsp;&nbsp;&nbsp;&nbsp;码:</label>
+                                    <input type="password" required class="form-control" name="password"
+                                        placeholder="Password">
+                                </div>
+
+                                <div class="form-group form-inline">
+                                    <label for="">确&nbsp;&nbsp;&nbsp;&nbsp;认:</label>
+                                    <input type="password" required class="form-control" name="confirm"
+                                        placeholder="确认密码">
+                                </div>
+
+
+                                <div class="form-group form-inline">
+                                    <label for="">验证码:</label>
+                                    <input type="number" oninput="if(value.length>4)value=value.slice(0,4)" required
+                                        class="form-control" name="code" style="width: 115px;" placeholder="输出验证码" />
+                                    <img src="/captcha" onclick="this.src='/captcha?v='+Math.random()" height="36">
+                                    <!-- </div> -->
+                                </div>
+
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"> 记住&nbsp;<span><a data-toggle="modal"
+                                                href="#mymodal-link" id="href-register">已有账号去登录</a></span>
+                                    </label>
+                                </div>
+                                <!-- <button type="submit" class="btn btn-default" ><a  data-toggle="modal" href="#mymodal-link" id="href-btn">去登录</a></button> -->
+                                <!-- <button class="btn btn-default">注册</button> -->
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-default">注册</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+                            <!-- <button type="button" class="btn btn-primary">保存</button> -->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            </form>
+
+            <tr>
+                <td colspan="5" style="color:red;font-size: 20px;">{{ .zuosi }}{{ .datanull}} {{
+                    .deletesussce}}{{.daoqi}}</td>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    <span><a
+                            href="/user/auth/anecdote?cmt={{.mmcmt}}&title={{ .title }}&auth={{ .auth}}&pageSize=15&currentPage={{ .reduce }}">上一页</a></span>
+                    <span>第{{.currentPage}}页</span>
+                    <span><a
+                            href="/user/auth/anecdote?cmt={{.mmcmt}}&title={{ .title }}&auth={{ .auth}}&pageSize=15&currentPage={{ .add }}">下一页</a></span>
+                    <span>共 {{ .total }}{{ .seratotal}}条</span>
+                    <span>共{{ .pagenumber}}页</span>
+                    <span><a href="{{ .renovate }}">刷新</a></span>
+                    <span>前往 <input class="page" style="width: 30px;height: 20px;" value="{{.currentPage}}"
+                            type="number" id="pageNo" /> 页</span>
+                    <span><a style="color: blue;"
+                            onclick="location ='/user/auth/anecdote?cmt={{.mmcmt}}&title={{ .title }}&auth={{ .auth }}&pageSize=15&currentPage='+document.getElementById('pageNo').value;">确定</a></span>
+                </td>
+            </tr>
+        </table>
+
+        <!-- 两边留白低部 -->
+        <div class="container bg-info" style="font-size: 4px;">
+            声明：所有信息均来自互联网公开数据，仅供参考学习使用，如有侵权，请联系管理员删除
+            <a href="https://beian.miit.gov.cn/" target="_blank"><span> 粤ICP备2021080513号-1</span></a>
+            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=690542787&site=qq&menu=yes">
+                <img border="0" src="http://wpa.qq.com/pa?p=2:690542787:51" alt="点击这里给我发消息" title="点击这里给我发消息" /></a>
+            <a target="_blank"
+                href="https://qm.qq.com/cgi-bin/qm/qr?k=vFjALZ5EQ7c8kexAyJE5ENsyW8iosSFX&jump_from=webapi">
+                <img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="点击这里加入QQ群" title="点击这里加入QQ群"></a>
+            QQ:690542787(微信同步)
+            <a onclick="showimg()" type="button" class="layui-btn layui-btn-xs layui-btn-normal">联系客服</a>
+            <a onclick="wetchatpay()" type="button" class="layui-btn layui-btn-xs layui-btn-normal">微信付款</a>
+            <a onclick="alipay()" type="button" class="layui-btn layui-btn-xs layui-btn-normal">支付宝付款</a>
+
+        </div>
+
+</body>
+
+<script type="text/javascript">
+    const signInBtn = document.getElementById("signIn");
+    const signUpBtn = document.getElementById("signUp");
+    const container = document.querySelector(".container");
+    signInBtn.addEventListener("click", () => {
+        container.classList.remove("right-panel-active");
+    });
+    signUpBtn.addEventListener("click", () => {
+        container.classList.add("right-panel-active");
+    });
+    fistForm.addEventListener("submit", (e) => e.preventDefault());
+    secondForm.addEventListener("submit", (e) => e.preventDefault());
+    function validatelt(inputelement, err) {
+        if (inputelement.validity.patternMismatch) {
+            inputelement.setCustomValidity(err);
+
+        } else {
+            inputelement.setCustomValidity("");
+            return true;
+        }
+    }
+</script>
+
+<script type="text/javascript">
+    $('#mymodal-link').modal({
+        backdrop: 'static'
+    });
+
+    $('#mymodal-register').on('hide.bs.modal', function () {
+        alert('未完成注册');
+        backdrop: 'static'
+        $('#mymodal-register').modal({
+            backdrop: 'static'
+        });
+
+        $('#mymodal-register').on('hide.bs.modal', function () {
+            window.location.reload();
+        });
+    });
+
+</script>
+
+<style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none !important;
+    }
+
+    input[type='number'] {
+        -moz-appearance: textfield;
+    }
+
+    .crushtobuy {
+        border: 1px solid #eb5648;
+        color: #eb5648;
+        padding: 5px 20px 5px 20px;
+        font-size: 20px;
+    }
+
+    .crushtobuy:hover {
+        background: #eb5648;
+        color: white;
+    }
+</style>
+
+</html>

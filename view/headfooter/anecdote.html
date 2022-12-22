@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+{{template "title".}}
+
+<body>
+
+
+    <div class="layui-layout layui-layout-admin ">
+        <div class="layui-header layui-bg-blue">
+            <div class="layui-logo layui-hide-xs layui-bg-black layui-bg-blue "><img src="/static/img/caijiloga.png"
+                    alt=""></div>
+
+
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item layui-hide layui-show-md-inline-block">
+                    <a target="_blank" href="/vip"><img src="./static/img/vip.jpg" alt=""></a>
+                </li>
+                <li class="layui-nav-item layui-hide layui-show-md-inline-block">
+                    <a href="javascript:;">
+                        <img src="{{.ordinaryuser}}{{.vipuserimg}}" class="layui-nav-img">
+                        用户名:{{ .username }}
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd style="color: blue;"><span>账&nbsp;&nbsp;号:{{ .account }}</span></dd>
+                        <dd style="color: blue;"><span>有效期:{{ .vip }}</span><span style="color: red;">{{.daoqi}}</span>
+                        </dd>
+                        <dd><a href="/user/auth/loginout">退出</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item" lay-header-event="menuRight" lay-unselect>
+                    <a href="javascript:;">
+                        <i class="layui-icon layui-icon-more-vertical"></i>
+                    </a>
+                </li>
+            </ul>
+
+
+
+        </div>
+        <div class="layui-side " style="background-color: white;height:100%">
+            <!-- 左边菜单栏 -->
+            <div>
+                {{ template "sidemenu" .}}
+            </div>
+        </div>
+
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <br>
+            {{ template "uchead". }}
+            <!-- 以上复制头部 -->
+
+
+            <div>
+                <form action="/user/auth/anecdote" method="get">
+                    <table>
+                        <tr>
+                            <td style="width: 120px;"><span><input class="layui-input" lay-verify="required"
+                                        style="width: 120px;height:28px" placeholder="{{ .searchnull}}阅读量大于" value="{{ .inputvalee }}{{
+                                .cmtread}}" name="cmt">
+                                </span>
+                            </td>
+                            <td>
+                                <span><input class="layui-input" lay-verify="required" placeholder="请输入标题" type="text"
+                                        value="{{ .title}}" style="width: 120px;height:28px" name="title">
+                                </span>
+                            </td>
+                            <td>
+                                <span><input class="layui-input" lay-verify="required" placeholder="输入作者名称" type="text"
+                                        value="{{ .auth}}" style="width: 120px;height:28px" name="auth">
+                                </span>
+                            </td>
+                            <td><span>&nbsp; <button
+                                        style="width: 40px;height:28px;color:aliceblue;border:none;outline:none;"
+                                        type="submit" class="layui-bg-blue" id="search">搜索</button></span> </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+
+
+            <table class="layui-table" lay-skin="line">
+                <tr>
+                    <th style="text-align: center;font-weight: bold;font-size:18px">标题</th>
+                    <th style="text-align: center;font-weight: bold;font-size:18px">时间</th>
+                    <th style="text-align: center;font-weight: bold;font-size:18px">作者</th>
+                    <th style="text-align: center;font-weight: bold;font-size:18px">评论</th>
+                    <th style="text-align: center;font-weight: bold;font-size:18px">阅读量</th>
+                </tr>
+                {{ range $v := .ucsh }}
+                <tr style="text-align: center;">
+                    <td style="width: 40%;"><a target="_blank" href="{{ .Link }}">{{ .Title }}</a></td>
+                    <td><a></a> <span id="timestampToTime">{{ .Itm}}</span></td>
+                    <td>{{ .Auth }}</td>
+                    <td>{{ .Cmt }}</td>
+                    <td>{{ .Cnt}}</td>
+
+                </tr>
+                {{ end }}
+
+                {{ range $v := .searUcCntt }}
+                <tr style="text-align: center;">
+                    <td style="width: 40%;"><a target="_blank" href="{{ .Link }}">{{ .Title }}</a></td>
+                    <td><a></a> <span id="timestampToTime">{{ .Itm}}</span></td>
+                    <td>{{ .Auth }}</td>
+                    <td>{{ .Cmt }}</td>
+                    <td>{{ .Cnt}}</td>
+                </tr>
+                {{ end }}
+
+
+
+                <tr>
+                    <td colspan="6" style="text-align: center;">
+                        <a style="color: blue;" type="button"
+                            href="/user/auth/anecdote?cmt={{.mmcmt}}&title={{ .title }}&auth={{ .auth}}&pageSize=15&currentPage={{ .reduce }}">上一页</a>&nbsp;
+                        <span>第 {{.currentPage}} 页</span>&nbsp;
+                        <a style="color: blue;"
+                            href="/user/auth/anecdote?cmt={{.mmcmt}}&title={{ .title }}&auth={{ .auth}}&pageSize=15&currentPage={{ .add }}">下一页</a>
+                        &nbsp;<span>共 {{ .total }}{{ .seratotal}}条</span>&nbsp; <span><span>共 {{ .pagenumber}}
+                                页</span><a style="color: blue;" href="{{ .renovate }}"> 刷新 </a></span>
+                        <span>前往 <input class="page" type="number" min="1" autocomplete="off" id="pageNo"
+                                value="{{.currentPage}}" onKeyPress="onlyNumber();" /> 页 </span>
+                        <a style="color: blue;"
+                            onclick="location ='/user/auth/anecdote?cmt={{.mmcmt}}&title={{ .title }}&auth={{ .auth}}&pageSize=15&currentPage='+document.getElementById('pageNo').value;">确定</a>
+
+                        <!-- <select name="city" id="pageTotal" lay-verify="" class="total">
+                <option value="15">15条/页</option>
+                <option value="20">20条/页</option>
+                <option value="50">50条/页</option>
+                <option value="100">100条/页</option>
+            </select>
+            <a style="color: blue;"
+                onclick="location ='/car?cmt=&pageSize='+document.getElementById('pageTotal').value;">确定</a> -->
+                    </td>
+
+                </tr>
+
+
+            </table>
+
+
+            <!-- 这段复制尾部 -->
+            <div style="width: 100%;text-align: center;font-size:80px;color: blue;height: 80px;line-height: 80px;">
+                <span>{{ .zuosi }}{{ .datanull}} {{ .deletesussce}}{{.daoqi}}</span>
+            </div>
+        </div>
+
+
+
+
+
+
+        {{ template "footer" .}}

@@ -1,0 +1,120 @@
+{{define "footer"}}
+
+<div class="container">
+    <img class="wehat" src="/static/img/we.jpg" id="test" height="250" width="250"
+        style="margin-left: 67.3%;margin-top:-25%;z-index:99999;">
+    <img class="wehat" src="/static/img/wechatpay.jpg" id="we" height="250" width="250"
+        style="margin-left: 67.3%;margin-top:-25%;z-index:99999;">
+    <img class="wehat" src="/static/img/alipay.jpg" id="ali" height="250" width="250"
+        style="margin-left: 67.3%;margin-top:-25%;z-index:99999;">
+</div>
+
+<!-- 两边留白低部 -->
+<div class="container bg-info" style="font-size: 4px;">
+    声明：所有信息均来自互联网公开数据，仅供参考学习使用，如有侵权，请联系管理员删除
+    <a href="https://beian.miit.gov.cn/" target="_blank"><span> 粤ICP备2021080513号-1</span></a>
+    <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=690542787&site=qq&menu=yes">
+        <img border="0" src="http://wpa.qq.com/pa?p=2:690542787:51" alt="点击这里给我发消息" title="点击这里给我发消息" /></a>
+    <a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=vFjALZ5EQ7c8kexAyJE5ENsyW8iosSFX&jump_from=webapi">
+        <img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="点击这里加入QQ群" title="点击这里加入QQ群"></a>
+    QQ:690542787(微信同步)
+    <a onclick="showimg()" type="button" class="layui-btn layui-btn-xs layui-btn-normal">联系客服</a>
+    <a onclick="wetchatpay()" type="button" class="layui-btn layui-btn-xs layui-btn-normal">微信付款</a>
+    <a onclick="alipay()" type="button" class="layui-btn layui-btn-xs layui-btn-normal">支付宝付款</a>
+
+</div>
+
+
+</div>
+
+
+
+</body>
+<script>
+    function showimg() {
+        document.getElementById('test').style.display = "block";
+    }
+
+    function wetchatpay() {
+        document.getElementById('we').style.display = "block";
+    }
+    function alipay() {
+        document.getElementById('ali').style.display = "block";
+    }
+
+
+</script>
+
+<!-- <script src="./static/dist/js/bootstrap.main.js"></script> -->
+<style>
+    .wehat {
+        display: none;
+    }
+
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+
+    }
+
+    .meun,
+    tr,
+    td {
+        width: auto;
+        border-style: none;
+    }
+
+    th {
+        text-align: center;
+        /* font-size: 15px; */
+        font-weight: bold;
+    }
+
+    .headdaohao {
+        width: 100%;
+        height: 60px;
+        vertical-align: middle;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none !important;
+    }
+
+    input[type='number'] {
+        -moz-appearance: textfield;
+    }
+
+    .page {
+        height: 20px;
+        outline-style: none;
+        border: 0.5px solid #20cca7;
+        width: 40px;
+        text-align: center;
+    }
+
+    a:hover {
+        color: red;
+        text-decoration: none;
+
+    }
+
+    .pcrushtobuy {
+        border: 1px solid #eb5648;
+        /* color: #eb5648; */
+        color: white;
+        padding: 5px 20px 5px 20px;
+        font-size: 15px;
+        background: #eb5648;
+    }
+
+    .pcrushtobuy:hover {
+        background: #eb5648;
+        color: white;
+
+    }
+</style>
+
+</html>
+{{ end }}

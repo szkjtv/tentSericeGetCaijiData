@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="zh-CN">
+
+{{ template "title"}}
+
+
+<body>
+
+    <!-- 占满所有宽度 -->
+    <div class="container-fluid" style="background-color: #1E9FFF;height: 60px;">
+        <table class="table headdaohao">
+            <tbody>
+                <th style="text-align:center;vertical-align:middle;width: 200px;"><img src="../static/img/caijiloga.png"
+                        alt="" srcset=""></th>
+                <th></th>
+
+                <th></th>
+                <th></th>
+                <th></th>
+            </tbody>
+
+        </table>
+
+
+
+    </div>
+
+
+    <div class="container" align="center" valign="middle">
+
+
+
+
+        <table>
+            <tr align="center">
+                <td>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h1>月付</h1>
+                            <h1>
+                                <p style="color: red;">
+                                    15.00<sup><span style="font-size: 13.3333px;">￥98折</span></sup>
+                                </p>
+                                <span style=" font-size: 16px;text-decoration: line-through;">￥19.90</span>
+                            </h1>
+                            <br>
+                            <h1>功能</h1>
+                            <br>
+                            <h6>可使用编辑器基础功能</h6>
+                            <h6>可利用深度搜索进行内容搜索</h6>
+
+
+                            <br>
+                            <h1>服务</h1>
+                            <br>
+                            <h2>1个客户端在线使用</h2>
+                            <h2>7x24小时无限制使用</h2>
+                            <h2>
+
+                            </h2>
+                            <!-- <h2><a data-toggle="modal" data-target="#myModal">购买</a></h2> -->
+                            <h2> <a href="/user/auth/getpay" rel="external nofollow" data-toggle="modal"
+                                    data-target="#myModal"><span class="{{.crushtobuy}}">{{.Rushtobuy}}</span></a></h2>
+
+                            <!-- <a href="/user/auth/getpay" rel="external nofollow" data-toggle="modal"
+                                data-target="#myModal">立即抢购</a> -->
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h1>季度</h1>
+                            <h1>
+                                <p style="color: red;">
+                                    45.00<sup><span style="font-size: 13.3333px;">￥98折</span></sup>
+                                </p>
+                                <span style=" font-size: 16px;text-decoration: line-through;">￥57.00</span>
+                            </h1>
+                            <br>
+                            <h1>功能</h1>
+                            <br>
+                            <h6>可使用编辑器基础功能</h6>
+                            <h6>可利用深度搜索进行内容搜索</h6>
+
+
+                            <br>
+                            <h1>服务</h1>
+                            <br>
+                            <h2>1个客户端在线使用</h2>
+                            <h2>7x24小时无限制使用</h2>
+                            <h2> <a href="/user/auth/getthree" rel="external nofollow" data-toggle="modal"
+                                    data-target="#myModal"><span class="{{.crushtobuy}}">{{.Rushtobuy}}</span></a></h2>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h1>半年</h1>
+                            <h1>
+                                <p style="color: red;">
+                                    90.00<sup><span style="font-size: 13.3333px;">￥98折</span></sup>
+                                </p>
+                                <span style=" font-size: 16px;text-decoration: line-through;">￥119.4</span>
+                            </h1>
+                            <br>
+                            <h1>功能</h1>
+                            <br>
+                            <h6>可使用编辑器基础功能</h6>
+                            <h6>可利用深度搜索进行内容搜索</h6>
+                            <br>
+                            <h1>服务</h1>
+                            <br>
+                            <h2>1个客户端在线使用</h2>
+                            <h2>7x24小时无限制使用</h2>
+                            <h2> <a href="/user/auth/halfyear" rel="external nofollow" data-toggle="modal"
+                                    data-target="#myModal"><span class="{{.crushtobuy}}">{{.Rushtobuy}}</span></a></h2>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h1>年付</h1>
+                            <h1>
+                                <p style="color: red;">
+                                    180.0<sup><span style="font-size: 13.3333px;">￥7折</span></sup>
+                                </p>
+                                <span style=" font-size: 16px;text-decoration: line-through;">￥238.8</span>
+                            </h1>
+                            <br>
+                            <h1>功能</h1>
+                            <br>
+                            <h6>可使用编辑器基础功能</h6>
+                            <h6>可利用深度搜索进行内容搜索</h6>
+                            <br>
+                            <h1>服务</h1>
+                            <br>
+                            <h2>1个客户端在线使用</h2>
+                            <h2>7x24小时无限制使用</h2>
+                            <h2> <a href="/user/auth/getyear" rel="external nofollow" data-toggle="modal"
+                                    data-target="#myModal"><span class="{{.crushtobuy}}">{{.Rushtobuy}}</span></a>
+                            </h2>
+                        </div>
+                    </div>
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="4"> {{ template "footer"}}</td>
+            </tr>
+        </table>
+
+    </div>
+
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">查看方案</h4>
+                    <!--弹窗的标题-->
+                </div>
+                <div class="modal-body" style="height: 200px;">
+                    <!--弹窗的内容-->
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- 获取支付后再次弹窗确认 -->
+    <div class="modal fade" id="alert" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+        style="margin-top: 12%;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span
+                            style="color: red;background-color: white;">关闭</span></button>
+                    <h4 class="modal-title">等待支付</h4>
+                    <!--弹窗的标题-->
+                </div>
+                <div class="modal-body">
+                    <!--弹窗的内容-->
+                    <p style="text-align: center;font-size: 16px;font-weight:bold;">请在新打开的页面中完成支付(支付完成请回到首页刷新查看充值到账情况
+                    </p>
+                    <p style="text-align: center;font-size: 14px;font-weight:bold;">（如有疑问请在网站低部联系管理员微信提问）</p>
+                    <!-- <p style="text-align: right;">回到首页查看</p> -->
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-default" data-dismiss="modal">已完成</button>
+                    <button type="button" class="btn btn-primary">关闭</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        // $("#myModal").modal({
+        //     remote: "/user/auth/vip",
+        //     backdrop: 'static',
+        //     keyboard: false
+        // })
+        // $(".myModal").click(function () {
+        //     $('#myModal').modal('show');
+        //     alert('模态框打开了');
+        // });
+
+        $('#myModal').on('hide.bs.modal', function () {
+            // alert('已支付');
+            $('#alert').modal({
+                backdrop: 'static'
+            });
+
+            $('#alert').on('hide.bs.modal', function () {
+                window.location.reload();
+            });
+        });
+    </script>
+</body>
+<style>
+    .crushtobuy {
+        border: 1px solid #eb5648;
+        color: #eb5648;
+        padding: 5px 20px 5px 20px;
+        font-size: 20px;
+    }
+
+    .crushtobuy:hover {
+        background: #eb5648;
+        color: white;
+    }
+</style>
+
+</html>

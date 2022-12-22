@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-CN">
+
+{{ template "title"}}
+
+
+<body>
+
+    <!-- 占满所有宽度 -->
+    <div class="container-fluid" style="background-color: #1E9FFF;height: 60px;">
+        <table class="table headdaohao">
+            <tbody>
+                <th style="text-align:center;vertical-align:middle;width: 200px;"><img src="../static/img/caijiloga.png"
+                        alt="" srcset=""></th>
+                <th></th>
+
+                <th></th>
+                <th></th>
+                <th></th>
+            </tbody>
+
+        </table>
+
+
+
+    </div>
+
+
+    <div class="container" align="center" valign="middle">
+
+
+
+
+        <table>
+            <tr align="center">
+                <td>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h1>月付</h1>
+                            <h1>
+                                <p style="color: red;">
+                                    15.00<sup><span style="font-size: 13.3333px;">￥98折</span></sup>
+                                </p>
+                                <span style=" font-size: 16px;text-decoration: line-through;">￥19.90</span>
+                            </h1>
+                            <br>
+                            <h1>功能</h1>
+                            <br>
+                            <h6>可使用编辑器基础功能</h6>
+                            <h6>可利用深度搜索进行内容搜索</h6>
+
+
+                            <br>
+                            <h1>服务</h1>
+                            <br>
+                            <h2>1个客户端在线使用</h2>
+                            <h2>7x24小时无限制使用</h2>
+                            <h2><a href="/user/auth/getpay">{{.Rushtobuy}}</a><a target="_blank"
+                                    href="{{.url}}">{{.pay}}</a></h2>
+                            <!-- <h2><a href="{{.url}}">{{.pay}}</a></h2> -->
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h1>季度</h1>
+                            <h1>
+                                <p style="color: red;">
+                                    45.00<sup><span style="font-size: 13.3333px;">￥98折</span></sup>
+                                </p>
+                                <span style=" font-size: 16px;text-decoration: line-through;">￥57.00</span>
+                            </h1>
+                            <br>
+                            <h1>功能</h1>
+                            <br>
+                            <h6>可使用编辑器基础功能</h6>
+                            <h6>可利用深度搜索进行内容搜索</h6>
+
+
+                            <br>
+                            <h1>服务</h1>
+                            <br>
+                            <h2>1个客户端在线使用</h2>
+                            <h2>7x24小时无限制使用</h2>
+
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h1>半年</h1>
+                            <h1>
+                                <p style="color: red;">
+                                    90.00<sup><span style="font-size: 13.3333px;">￥98折</span></sup>
+                                </p>
+                                <span style=" font-size: 16px;text-decoration: line-through;">￥119.4</span>
+                            </h1>
+                            <br>
+                            <h1>功能</h1>
+                            <br>
+                            <h6>可使用编辑器基础功能</h6>
+                            <h6>可利用深度搜索进行内容搜索</h6>
+
+
+                            <br>
+                            <h1>服务</h1>
+                            <br>
+                            <h2>1个客户端在线使用</h2>
+                            <h2>7x24小时无限制使用</h2>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h1>年付</h1>
+                            <h1>
+                                <p style="color: red;">
+                                    180.0<sup><span style="font-size: 13.3333px;">￥7折</span></sup>
+                                </p>
+                                <span style=" font-size: 16px;text-decoration: line-through;">￥238.8</span>
+                            </h1>
+                            <br>
+                            <h1>功能</h1>
+                            <br>
+                            <h6>可使用编辑器基础功能</h6>
+                            <h6>可利用深度搜索进行内容搜索</h6>
+
+
+                            <br>
+                            <h1>服务</h1>
+                            <br>
+                            <h2>1个客户端在线使用</h2>
+                            <h2>7x24小时无限制使用</h2>
+
+
+                        </div>
+                    </div>
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="4"> {{ template "footer"}}</td>
+            </tr>
+        </table>
+
+    </div>
+
+
+</body>
+
+</html>
